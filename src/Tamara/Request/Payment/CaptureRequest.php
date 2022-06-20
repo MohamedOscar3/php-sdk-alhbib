@@ -1,24 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Payment;
 
-namespace Tamara\Request\Payment;
-
-use Tamara\Model\Payment\Capture;
-
+use TMS\Tamara\Model\Payment\Capture;
 class CaptureRequest
 {
     /**
      * @var Capture
      */
     private $capture;
-
-    public function __construct(Capture $capture)
+    public function __construct(\TMS\Tamara\Model\Payment\Capture $capture)
     {
         $this->capture = $capture;
     }
-
-    public function getCapture(): Capture
+    public function getCapture() : \TMS\Tamara\Model\Payment\Capture
     {
         return $this->capture;
     }

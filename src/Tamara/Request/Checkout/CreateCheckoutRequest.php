@@ -1,23 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Checkout;
 
-namespace Tamara\Request\Checkout;
-
-use Tamara\Model\Order\Order;
-
+use TMS\Tamara\Model\Order\Order;
 class CreateCheckoutRequest
 {
     /**
      * @var Order
      */
     private $order;
-
-    public function __construct(Order $order)
+    public function __construct(\TMS\Tamara\Model\Order\Order $order)
     {
         $this->order = $order;
     }
-
     /**
      * @return Order
      */
@@ -25,5 +21,4 @@ class CreateCheckoutRequest
     {
         return $this->order;
     }
-
 }

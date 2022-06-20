@@ -1,25 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Request;
 
-namespace Tamara\Request;
-
-use Tamara\Exception\RequestDispatcherException;
-use Tamara\HttpClient\HttpClient;
-use Tamara\Response\ClientResponse;
-
+use TMS\Tamara\Exception\RequestDispatcherException;
+use TMS\Tamara\HttpClient\HttpClient;
+use TMS\Tamara\Response\ClientResponse;
 class RequestDispatcher
 {
     /**
      * @var HttpClient
      */
     private $httpClient;
-
-    public function __construct(HttpClient $httpClient)
+    public function __construct(\TMS\Tamara\HttpClient\HttpClient $httpClient)
     {
         $this->httpClient = $httpClient;
     }
-
     /**
      * @param object $request
      *
@@ -29,28 +25,16 @@ class RequestDispatcher
      */
     public function dispatch($request)
     {
-        $requestClass = get_class($request);
+        $requestClass = \get_class($request);
         $handlerClass = $requestClass . 'Handler';
-
-        if (!class_exists($handlerClass)) {
-            throw new RequestDispatcherException(sprintf(
-                'Missing handler for this request, please add %s',
-                $handlerClass
-            ));
+        if (!\class_exists($handlerClass)) {
+            throw new \TMS\Tamara\Exception\RequestDispatcherException(\sprintf('Missing handler for this request, please add %s', $handlerClass));
         }
-
         $handler = new $handlerClass($this->httpClient);
-
         $response = $handler($request);
-
-        if (!$response instanceof ClientResponse) {
-            throw new RequestDispatcherException(sprintf(
-                'The response of the %s::__invoke must be type of %s',
-                $handlerClass,
-                ClientResponse::class
-            ));
+        if (!$response instanceof \TMS\Tamara\Response\ClientResponse) {
+            throw new \TMS\Tamara\Exception\RequestDispatcherException(\sprintf('The response of the %s::__invoke must be type of %s', $handlerClass, \TMS\Tamara\Response\ClientResponse::class));
         }
-
         return $response;
     }
 }

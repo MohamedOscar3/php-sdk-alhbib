@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Tamara\Exception;
+declare (strict_types=1);
+namespace TMS\Tamara\Exception;
 
 use Exception;
-
-class RequestDispatcherException extends Exception
+class RequestDispatcherException extends \Exception
 {
 }

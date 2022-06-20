@@ -1,24 +1,21 @@
 <?php
 
-namespace Tamara\Exception;
+namespace TMS\Tamara\Exception;
 
-use Psr\Http\Client\RequestExceptionInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use TMS\Psr\Http\Client\RequestExceptionInterface;
+use TMS\Psr\Http\Message\RequestInterface;
+use TMS\Psr\Http\Message\ResponseInterface;
 use Exception;
-
-class RequestException extends Exception implements RequestExceptionInterface
+class RequestException extends \Exception implements \TMS\Psr\Http\Client\RequestExceptionInterface
 {
     /**
      * @var RequestInterface
      */
     protected $request;
-
     /**
      * @var ResponseInterface|null
      */
     protected $response;
-
     /**
      * @param string                 $message
      * @param int                    $code
@@ -26,27 +23,20 @@ class RequestException extends Exception implements RequestExceptionInterface
      * @param null|ResponseInterface $response
      * @param Exception|null        $previous
      */
-    public function __construct(
-        string $message,
-        int $code,
-        RequestInterface $request,
-        ?ResponseInterface $response,
-        Exception $previous = null
-    ) {
+    public function __construct(string $message, int $code, \TMS\Psr\Http\Message\RequestInterface $request, ?\TMS\Psr\Http\Message\ResponseInterface $response, \Exception $previous = null)
+    {
         parent::__construct($message, $code, $previous);
         $this->request = $request;
         $this->response = $response;
     }
-
-    public function getRequest(): RequestInterface
+    public function getRequest() : \TMS\Psr\Http\Message\RequestInterface
     {
         return $this->request;
     }
-
     /**
      * @return ResponseInterface|null
      */
-    public function getResponse(): ?ResponseInterface
+    public function getResponse() : ?\TMS\Psr\Http\Message\ResponseInterface
     {
         return $this->response;
     }

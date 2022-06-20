@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Tamara\Response\Payment;
+declare (strict_types=1);
+namespace TMS\Tamara\Response\Payment;
 
 class RefundItemResponse
 {
@@ -10,24 +9,20 @@ class RefundItemResponse
      * @var string
      */
     private $captureId;
-
     /**
      * @var string
      */
     private $refundId;
-
     public function __construct(string $captureId, string $refundId)
     {
         $this->captureId = $captureId;
         $this->refundId = $refundId;
     }
-
-    public function getCaptureId(): string
+    public function getCaptureId() : string
     {
         return $this->captureId;
     }
-
-    public function getRefundId(): string
+    public function getRefundId() : string
     {
         return $this->refundId;
     }

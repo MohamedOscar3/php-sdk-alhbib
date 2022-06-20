@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Tamara\Request\Order;
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Order;
 
 class GetOrderByReferenceIdRequest
 {
@@ -10,13 +9,11 @@ class GetOrderByReferenceIdRequest
      * @var string
      */
     private $referenceId;
-
     public function __construct(string $referenceId)
     {
         $this->referenceId = $referenceId;
     }
-
-    public function getReferenceId(): string
+    public function getReferenceId() : string
     {
         return $this->referenceId;
     }

@@ -1,22 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Order;
 
-namespace Tamara\Request\Order;
-
-use Tamara\Request\AbstractRequestHandler;
-use Tamara\Response\Order\GetOrderByReferenceIdResponse;
-
-class GetOrderByReferenceIdRequestHandler extends AbstractRequestHandler
+use TMS\Tamara\Request\AbstractRequestHandler;
+use TMS\Tamara\Response\Order\GetOrderByReferenceIdResponse;
+class GetOrderByReferenceIdRequestHandler extends \TMS\Tamara\Request\AbstractRequestHandler
 {
     private const GET_ORDER_BY_REFERENCE_ID_URL = '/merchants/orders/reference-id/%s';
-
-    public function __invoke(GetOrderByReferenceIdRequest $request)
+    public function __invoke(\TMS\Tamara\Request\Order\GetOrderByReferenceIdRequest $request)
     {
-        $response = $this->httpClient->get(
-            sprintf(self::GET_ORDER_BY_REFERENCE_ID_URL, $request->getReferenceId())
-        );
-
-        return new GetOrderByReferenceIdResponse($response);
+        $response = $this->httpClient->get(\sprintf(self::GET_ORDER_BY_REFERENCE_ID_URL, $request->getReferenceId()));
+        return new \TMS\Tamara\Response\Order\GetOrderByReferenceIdResponse($response);
     }
 }

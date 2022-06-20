@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Response\Webhook;
 
-namespace Tamara\Response\Webhook;
-
-use Tamara\Response\ClientResponse;
-
-class RemoveWebhookResponse extends ClientResponse
+use TMS\Tamara\Response\ClientResponse;
+class RemoveWebhookResponse extends \TMS\Tamara\Response\ClientResponse
 {
-    protected function parse(array $responseData): void
+    protected function parse(array $responseData) : void
     {
     }
 }

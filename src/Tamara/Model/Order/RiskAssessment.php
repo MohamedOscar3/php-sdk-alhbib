@@ -1,6 +1,6 @@
 <?php
 
-namespace Tamara\Model\Order;
+namespace TMS\Tamara\Model\Order;
 
 class RiskAssessment
 {
@@ -8,13 +8,11 @@ class RiskAssessment
      * @var array
      */
     private $data;
-
     public function __construct(array $data = [])
     {
         $this->data = $data;
     }
-
-    public function getData(): array
+    public function getData() : array
     {
         return $this->data;
     }

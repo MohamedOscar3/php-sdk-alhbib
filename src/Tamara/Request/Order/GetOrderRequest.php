@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Tamara\Request\Order;
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Order;
 
 class GetOrderRequest
 {
@@ -10,13 +9,11 @@ class GetOrderRequest
      * @var string Tamara order id
      */
     private $orderId;
-
     public function __construct(string $orderId)
     {
         $this->orderId = $orderId;
     }
-
-    public function getOrderId(): string
+    public function getOrderId() : string
     {
         return $this->orderId;
     }

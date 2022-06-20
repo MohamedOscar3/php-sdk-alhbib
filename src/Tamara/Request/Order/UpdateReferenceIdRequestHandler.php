@@ -1,23 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Order;
 
-namespace Tamara\Request\Order;
-
-use Tamara\Request\AbstractRequestHandler;
-use Tamara\Response\Order\UpdateReferenceIdResponse;
-
-class UpdateReferenceIdRequestHandler extends AbstractRequestHandler
+use TMS\Tamara\Request\AbstractRequestHandler;
+use TMS\Tamara\Response\Order\UpdateReferenceIdResponse;
+class UpdateReferenceIdRequestHandler extends \TMS\Tamara\Request\AbstractRequestHandler
 {
     private const CANCEL_ORDER_ENDPOINT = '/orders/%s/reference-id';
-
-    public function __invoke(UpdateReferenceIdRequest $request)
+    public function __invoke(\TMS\Tamara\Request\Order\UpdateReferenceIdRequest $request)
     {
-        $response = $this->httpClient->put(
-            sprintf(self::CANCEL_ORDER_ENDPOINT, $request->getOrderId()),
-            $request->toArray()
-        );
-
-        return new UpdateReferenceIdResponse($response);
+        $response = $this->httpClient->put(\sprintf(self::CANCEL_ORDER_ENDPOINT, $request->getOrderId()), $request->toArray());
+        return new \TMS\Tamara\Response\Order\UpdateReferenceIdResponse($response);
     }
 }

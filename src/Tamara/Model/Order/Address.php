@@ -1,68 +1,48 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Tamara\Model\Order;
+declare (strict_types=1);
+namespace TMS\Tamara\Model\Order;
 
 class Address
 {
-    public const
-        FIRST_NAME = 'first_name',
-        LAST_NAME = 'last_name',
-        LINE1 = 'line1',
-        LINE2 = 'line2',
-        REGION = 'region',
-        POSTAL_CODE = 'postal_code',
-        CITY = 'city',
-        COUNTRY_CODE = 'country_code',
-        PHONE_NUMBER = 'phone_number';
-
+    public const FIRST_NAME = 'first_name', LAST_NAME = 'last_name', LINE1 = 'line1', LINE2 = 'line2', REGION = 'region', POSTAL_CODE = 'postal_code', CITY = 'city', COUNTRY_CODE = 'country_code', PHONE_NUMBER = 'phone_number';
     /**
      * @var string
      */
     private $firstName;
-
     /**
      * @var string
      */
     private $lastName;
-
     /**
      * @var string
      */
     private $line1;
-
     /**
      * @var string|null
      */
     private $line2;
-
     /**
      * @var string
      */
     private $region;
-
     /**
      * @var string
      */
     private $postalCode;
-
     /**
      * @var string
      */
     private $city;
-
     /**
      * @var string
      */
     private $countryCode;
-
     /**
      * @var string|null
      */
     private $phoneNumber;
-
-    public static function fromArray(array $data): Address
+    public static function fromArray(array $data) : \TMS\Tamara\Model\Order\Address
     {
         $self = new self();
         $self->setFirstName($data[self::FIRST_NAME]);
@@ -74,130 +54,91 @@ class Address
         $self->setCity($data[self::CITY] ?? '');
         $self->setCountryCode($data[self::COUNTRY_CODE]);
         $self->setPhoneNumber($data[self::PHONE_NUMBER]);
-
         return $self;
     }
-
-    public function setFirstName(string $firstName): Address
+    public function setFirstName(string $firstName) : \TMS\Tamara\Model\Order\Address
     {
         $this->firstName = $firstName;
-
         return $this;
     }
-
-    public function setLastName(string $lastName): Address
+    public function setLastName(string $lastName) : \TMS\Tamara\Model\Order\Address
     {
         $this->lastName = $lastName;
-
         return $this;
     }
-
-    public function setLine1(string $line1): Address
+    public function setLine1(string $line1) : \TMS\Tamara\Model\Order\Address
     {
         $this->line1 = $line1;
-
         return $this;
     }
-
-    public function setLine2(string $line2): Address
+    public function setLine2(string $line2) : \TMS\Tamara\Model\Order\Address
     {
         $this->line2 = $line2;
-
         return $this;
     }
-
-    public function setRegion(?string $region): Address
+    public function setRegion(?string $region) : \TMS\Tamara\Model\Order\Address
     {
         $this->region = $region ?? '';
-
         return $this;
     }
-
-    public function setPostalCode(?string $postalCode): Address
+    public function setPostalCode(?string $postalCode) : \TMS\Tamara\Model\Order\Address
     {
         $this->postalCode = $postalCode ?? '';
-
         return $this;
     }
-
-    public function setCity(string $city): Address
+    public function setCity(string $city) : \TMS\Tamara\Model\Order\Address
     {
         $this->city = $city;
-
         return $this;
     }
-
-    public function setCountryCode(string $countryCode): Address
+    public function setCountryCode(string $countryCode) : \TMS\Tamara\Model\Order\Address
     {
         $this->countryCode = $countryCode;
-
         return $this;
     }
-
-    public function setPhoneNumber(string $phoneNumber): Address
+    public function setPhoneNumber(string $phoneNumber) : \TMS\Tamara\Model\Order\Address
     {
         $this->phoneNumber = $phoneNumber;
-
         return $this;
     }
-
-    public function getFirstName(): string
+    public function getFirstName() : string
     {
         return $this->firstName;
     }
-
-    public function getLastName(): string
+    public function getLastName() : string
     {
         return $this->lastName;
     }
-
-    public function getLine1(): string
+    public function getLine1() : string
     {
         return $this->line1;
     }
-
-    public function getLine2(): string
+    public function getLine2() : string
     {
         return $this->line2 ?? '';
     }
-
-    public function getRegion(): string
+    public function getRegion() : string
     {
         return $this->region ?? '';
     }
-
-    public function getPostalCode(): string
+    public function getPostalCode() : string
     {
         return $this->postalCode ?? '';
     }
-
-    public function getCity(): string
+    public function getCity() : string
     {
         return $this->city;
     }
-
-    public function getCountryCode(): string
+    public function getCountryCode() : string
     {
         return $this->countryCode;
     }
-
-    public function getPhoneNumber(): string
+    public function getPhoneNumber() : string
     {
         return $this->phoneNumber ?? '';
     }
-
-    public function toArray(): array
+    public function toArray() : array
     {
-        return [
-            self::FIRST_NAME   => $this->getFirstName(),
-            self::LAST_NAME    => $this->getLastName(),
-            self::LINE1        => $this->getLine1(),
-            self::LINE2        => $this->getLine2(),
-            self::REGION       => $this->getRegion(),
-            self::POSTAL_CODE  => $this->getPostalCode(),
-            self::CITY         => $this->getCity(),
-            self::COUNTRY_CODE => $this->getCountryCode(),
-            self::PHONE_NUMBER => $this->getPhoneNumber(),
-        ];
+        return [self::FIRST_NAME => $this->getFirstName(), self::LAST_NAME => $this->getLastName(), self::LINE1 => $this->getLine1(), self::LINE2 => $this->getLine2(), self::REGION => $this->getRegion(), self::POSTAL_CODE => $this->getPostalCode(), self::CITY => $this->getCity(), self::COUNTRY_CODE => $this->getCountryCode(), self::PHONE_NUMBER => $this->getPhoneNumber()];
     }
 }

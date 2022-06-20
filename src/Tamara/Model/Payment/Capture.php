@@ -1,64 +1,45 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Model\Payment;
 
-namespace Tamara\Model\Payment;
-
-use Tamara\Model\Money;
-use Tamara\Model\Order\Order;
-use Tamara\Model\Order\OrderItemCollection;
-use Tamara\Model\ShippingInfo;
-
+use TMS\Tamara\Model\Money;
+use TMS\Tamara\Model\Order\Order;
+use TMS\Tamara\Model\Order\OrderItemCollection;
+use TMS\Tamara\Model\ShippingInfo;
 class Capture
 {
-    public const
-        CAPTURE_ID = 'capture_id',
-        SHIPPING_INFO = 'shipping_info';
-
+    public const CAPTURE_ID = 'capture_id', SHIPPING_INFO = 'shipping_info';
     /**
      * @var string Tamara order id
      */
     private $orderId;
-
     /**
      * @var Money
      */
     private $totalAmount;
-
     /**
      * @var Money
      */
     private $shippingAmount;
-
     /**
      * @var Money
      */
     private $taxAmount;
-
     /**
      * @var Money
      */
     private $discountAmount;
-
     /**
      * @var OrderItemCollection
      */
     private $items;
-
     /**
      * @var ShippingInfo
      */
     private $shippingInfo;
-
-    public function __construct(
-        string $orderId,
-        Money $totalAmount,
-        Money $shippingAmount,
-        Money $taxAmount,
-        Money $discountAmount,
-        OrderItemCollection $items,
-        ShippingInfo $shippingInfo
-    ) {
+    public function __construct(string $orderId, \TMS\Tamara\Model\Money $totalAmount, \TMS\Tamara\Model\Money $shippingAmount, \TMS\Tamara\Model\Money $taxAmount, \TMS\Tamara\Model\Money $discountAmount, \TMS\Tamara\Model\Order\OrderItemCollection $items, \TMS\Tamara\Model\ShippingInfo $shippingInfo)
+    {
         $this->orderId = $orderId;
         $this->totalAmount = $totalAmount;
         $this->shippingAmount = $shippingAmount;
@@ -67,52 +48,36 @@ class Capture
         $this->items = $items;
         $this->shippingInfo = $shippingInfo;
     }
-
-    public function getOrderId(): string
+    public function getOrderId() : string
     {
         return $this->orderId;
     }
-
-    public function getTotalAmount(): Money
+    public function getTotalAmount() : \TMS\Tamara\Model\Money
     {
         return $this->totalAmount;
     }
-
-    public function getShippingAmount(): Money
+    public function getShippingAmount() : \TMS\Tamara\Model\Money
     {
         return $this->shippingAmount;
     }
-
-    public function getTaxAmount(): Money
+    public function getTaxAmount() : \TMS\Tamara\Model\Money
     {
         return $this->taxAmount;
     }
-
-    public function getDiscountAmount(): Money
+    public function getDiscountAmount() : \TMS\Tamara\Model\Money
     {
         return $this->discountAmount;
     }
-
-    public function getItems(): OrderItemCollection
+    public function getItems() : \TMS\Tamara\Model\Order\OrderItemCollection
     {
         return $this->items;
     }
-
-    public function getShippingInfo(): ShippingInfo
+    public function getShippingInfo() : \TMS\Tamara\Model\ShippingInfo
     {
         return $this->shippingInfo;
     }
-
-    public function toArray(): array
+    public function toArray() : array
     {
-        return [
-            Order::ORDER_ID        => $this->getOrderId(),
-            Order::TOTAL_AMOUNT    => $this->getTotalAmount()->toArray(),
-            Order::ITEMS           => $this->getItems()->toArray(),
-            Order::SHIPPING_AMOUNT => $this->getShippingAmount()->toArray(),
-            Order::TAX_AMOUNT      => $this->getTaxAmount()->toArray(),
-            Order::DISCOUNT_AMOUNT => $this->getDiscountAmount()->toArray(),
-            self::SHIPPING_INFO    => $this->getShippingInfo()->toArray(),
-        ];
+        return [\TMS\Tamara\Model\Order\Order::ORDER_ID => $this->getOrderId(), \TMS\Tamara\Model\Order\Order::TOTAL_AMOUNT => $this->getTotalAmount()->toArray(), \TMS\Tamara\Model\Order\Order::ITEMS => $this->getItems()->toArray(), \TMS\Tamara\Model\Order\Order::SHIPPING_AMOUNT => $this->getShippingAmount()->toArray(), \TMS\Tamara\Model\Order\Order::TAX_AMOUNT => $this->getTaxAmount()->toArray(), \TMS\Tamara\Model\Order\Order::DISCOUNT_AMOUNT => $this->getDiscountAmount()->toArray(), self::SHIPPING_INFO => $this->getShippingInfo()->toArray()];
     }
 }

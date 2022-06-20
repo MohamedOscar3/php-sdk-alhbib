@@ -1,23 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace TMS\Tamara\Request\Payment;
 
-namespace Tamara\Request\Payment;
-
-use Tamara\Request\AbstractRequestHandler;
-use Tamara\Response\Payment\RefundResponse;
-
-class RefundRequestHandler extends AbstractRequestHandler
+use TMS\Tamara\Request\AbstractRequestHandler;
+use TMS\Tamara\Response\Payment\RefundResponse;
+class RefundRequestHandler extends \TMS\Tamara\Request\AbstractRequestHandler
 {
     private const CAPTURE_ENDPOINT = '/payments/refund';
-
-    public function __invoke(RefundRequest $request)
+    public function __invoke(\TMS\Tamara\Request\Payment\RefundRequest $request)
     {
-        $response = $this->httpClient->post(
-            self::CAPTURE_ENDPOINT,
-            $request->toArray()
-        );
-
-        return new RefundResponse($response);
+        $response = $this->httpClient->post(self::CAPTURE_ENDPOINT, $request->toArray());
+        return new \TMS\Tamara\Response\Payment\RefundResponse($response);
     }
 }

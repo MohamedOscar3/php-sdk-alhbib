@@ -1,7 +1,7 @@
 <?php
 
-namespace Tamara\Response\Order;
+namespace TMS\Tamara\Response\Order;
 
-class GetOrderResponse extends GetOrderByReferenceIdResponse
+class GetOrderResponse extends \TMS\Tamara\Response\Order\GetOrderByReferenceIdResponse
 {
 }
