@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Tamara\\": "src\/Tamara"
+            "TMS\\Tamara\\": "src\/Tamara"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tamara\\Tests\\": "tests\/"
+            "TMS\\Tamara\\Tests\\": "tests\/"
         }
     }
 }
